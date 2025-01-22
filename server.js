@@ -13,7 +13,7 @@ const path = require('path');
 const app = express();
 app.use('/uploadimg', express.static('vidi'));
 app.use(express.json());
-
+let PORT = process.env.PORT || 5000;
 
 const storage_img = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -56,7 +56,7 @@ const img_upload = multer({ storage: storage_img });
 
 app.use(bodyParser.json());
 app.use('/show_imgs', express.static('vidi'))
-app.listen('5000', () => {
+app.listen(PORT, () => {
   console.log("server has started.");
 });
 
